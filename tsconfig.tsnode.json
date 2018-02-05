@@ -2,7 +2,7 @@
   "compilerOptions": {
     "jsx": "react",
     "target": "es5",
-    "module": "es2015",
+    "module": "commonjs",
     "moduleResolution": "node",
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -11,4 +11,10 @@
       "node"
     ]
   },
+  "exclude": [
+    "node_modules"
+  ],
+  "files": [
+    "config/webpack.config.ts"
+  ]
 }

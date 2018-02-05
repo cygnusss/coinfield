@@ -1,3 +1,9 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 
-export default const App = () => (<div>Hello It's David</div>)
+const App = () => {
+  return (
+    <div>Hello It's David</div>
+  )
+}
+
+export default App
