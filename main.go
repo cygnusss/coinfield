@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"html/template"
+	"os"
 )
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
@@ -16,8 +17,14 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	fmt.Println("listening on port :3000")
-
-	http.HandleFunc("/", indexHandler)
-	http.ListenAndServe(":4200", nil)
+	http.Handle("/", http.FileServer(http.Dir("./client/dist")))
+	
+	port := os.Getenv("PORT")
+	
+	if port == "" {
+		port = "4200"
+	}
+	
+	fmt.Println("listening on port :"+port)
+	http.ListenAndServe(":"+port, nil)
 }
