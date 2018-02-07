@@ -16,9 +16,19 @@ const config: webpack.Configuration = {
   module: {
       loaders: [
           {
-          test: /\.tsx?$/,
-          loader: "ts-loader",
-          exclude: /node_modules/
+            test: /\.tsx?$/,
+            loader: "ts-loader",
+            exclude: /node_modules/
+          }, {
+            test: /\.css$/,
+            loader: 'style-loader'
+          }, {
+            test: /\.css$/,
+            loader: 'css-loader',
+            query: {
+              modules: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
           }
       ]       
   }

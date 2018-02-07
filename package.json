@@ -5,7 +5,8 @@
   "main": "electron.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\""
+    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "build": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,9 @@
     "@types/react-dom": "^16.0.3",
     "@types/webpack": "^3.8.5",
     "babel-loader": "^7.1.2",
+    "css-loader": "^0.28.9",
     "electron": "^1.7.12",
+    "style-loader": "^0.20.1",
     "ts-node": "^4.1.0",
     "webpack": "^3.10.0"
   },
