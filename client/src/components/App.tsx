@@ -1,8 +1,10 @@
 import * as React from 'react'
 
+import NavBar from './NavBar'
+
 const App = () => {
   return (
-    <div>Hello It's David</div>
+    <NavBar />
   )
 }
 
