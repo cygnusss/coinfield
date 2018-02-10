@@ -27,6 +27,8 @@
     "babel-loader": "^7.1.2",
     "css-loader": "^0.28.9",
     "electron": "^1.7.12",
+    "express": "^4.16.2",
+    "nodemon": "^1.14.12",
     "style-loader": "^0.20.1",
     "ts-node": "^4.1.0",
     "webpack": "^3.10.0"
@@ -38,7 +40,6 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
-    "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "ts-loader": "^3.4.0",
     "typescript": "^2.7.1",

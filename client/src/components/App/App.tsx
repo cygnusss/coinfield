@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import NavBar from './NavBar'
+import NavBar from '../NavBar/NavBar'
 
 const App = () => {
   return (
