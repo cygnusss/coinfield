@@ -34,6 +34,7 @@
     "webpack": "^3.10.0"
   },
   "dependencies": {
+    "@types/react-router-dom": "^4.2.3",
     "concurrently": "^3.5.1",
     "electron-builder": "^19.56.0",
     "electron-is-dev": "^0.3.0",
