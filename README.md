@@ -21,12 +21,12 @@ Coinfield is a _**unique**_ application that let's you get most recent prices fo
  ### Running the servers
  
  #### To run the go server
- Go to the directory containing main.go, run the go command:
+ From the root directory run:
  ```sh
    cd backend/src/main && go run main.go
  ```
  #### To run the express server
-  From the root directory run:
+ From the root directory run:
   ```sh
     npm start-dev
   ```
