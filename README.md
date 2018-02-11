@@ -16,11 +16,7 @@ Coinfield is a 'unique' application that let's you get most recent prices for cr
  ```sh
   cd coinfield/
  ```
- 3. From the repo directory run:
- ```sh
-  npm install
-  npm start-dev
- ```
+ 3. Follow the next section
  
  ### Running the servers
  
@@ -32,7 +28,7 @@ Coinfield is a 'unique' application that let's you get most recent prices for cr
  ####To run the express server
   From the root directory run:
   ```sh
-    nodemon app.js
+    npm start-dev
   ```
 
 
