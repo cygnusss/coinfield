@@ -22,3 +22,4 @@ Coinfield is a 'unique' application that let's you get most recent prices for cr
 # Requirements
 
 * Node 9.x 
+* go 1.9.4
