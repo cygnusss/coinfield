@@ -3,16 +3,17 @@
 const express = require("express")
 const path = require("path")
 
-const dist = path.resolve(__dirname, "./client/dist")
+const dist = path.resolve(__dirname, "./client/dist/")
 
 const app = express()
+const port = process.env.PORT || 8080
 
-app.use(express.static(dist))
+app.use("/dist/", express.static(dist))
 
 app.get("/*", (req, resp) => {
-  resp.sendFile(path.resolve(__dirname, "./client/dist/index.html"))
+  resp.sendFile(path.resolve(__dirname, "./client/index.html"))
 })
 
-app.listen(8080, "localhost", () => {
-  console.log("listening on 8080")
+app.listen(port, () => {
+  console.log("Running express app on port:", port)
 })

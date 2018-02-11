@@ -1,38 +1,29 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"net/http"
-	// no need for html/template since serving the dist folder
-	// "html/template"
 	"os"
+
+	"github.com/gorilla/mux"
 )
 
-// func indexHandler(w http.ResponseWriter, r *http.Request) {
-// 	t, err := template.ParseFiles("../templates/index.html")
-// 	if err != nil {
-// 		fmt.Fprintf(w, err.Error())
-// 	}
-// 	t.ExecuteTemplate(w, "index", nil)
-// }
+func handleAllRoutes(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "../../../client/index.html")
+}
 
 func main() {
-	// http.Handle("/dist/", http.FileServer(http.Dir("../../../client/dist")))
-	http.Handle("/dist", http.FileServer(http.Dir("../../../client/dist/")))
-	http.HandleFunc("/", HandleAll)
+	r := mux.NewRouter()
+
+	r.PathPrefix("/dist/").Handler(http.StripPrefix("/dist/", http.FileServer(http.Dir("../../../client/dist/"))))
+	r.PathPrefix("/").HandlerFunc(handleAllRoutes)
 
 	port := os.Getenv("PORT")
 
 	if port == "" {
-		port = "4200"
+		port = ":4200"
 	}
 
-	fmt.Println("listening on port :" + port)
-	http.ListenAndServe(":"+port, nil)
-}
-
-// HandleAll handles all routes and sends the html file
-func HandleAll(w http.ResponseWriter, r *http.Request) {
-	path := "../../../client/dist/index.html"
-	http.ServeFile(w, r, path)
+	log.Println("Running go app on port", port)
+	log.Fatal(http.ListenAndServe(port, r))
 }
