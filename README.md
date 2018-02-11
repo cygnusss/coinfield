@@ -7,12 +7,12 @@ Coinfield is a 'unique' application that let's you get most recent prices for cr
 
 # Instructions
 
- **To run the go server**
+ **To run the go server**  
  Go to the directory containing main.go, run the go command:
  ```sh
    cd backend/src/main && go run main.go
  ```
-**To run the express server**
+**To run the express server**  
   From the root directory:
   ```sh
     nodemon app.js
