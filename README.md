@@ -1,6 +1,6 @@
 # coinfield
 
-Coinfield is a _**unique**_ application that let's you get most recent prices for cryptocurrencies (never seen before, huh?). This app will make the world a better place.
+Coinfield is a _**unique**_ application that lets you get most recent prices for cryptocurrencies (never seen before, huh?). This app will make the world a better place.
 
 # Team
   - Currently only me
