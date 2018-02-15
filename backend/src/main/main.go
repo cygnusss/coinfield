@@ -22,16 +22,17 @@ func handleAllRoutes(w http.ResponseWriter, r *http.Request) {
 
 func handleSignup(w http.ResponseWriter, r *http.Request) {
 
-	if r.Method == "POST" {
+	switch r.Method {
+
+	case "GET":
+		handleAllRoutes(w, r)
+
+	case "POST":
 		var profile userProfile
 
 		decoder := json.NewDecoder(r.Body)
 		decoder.Decode(&profile)
 
-	}
-
-	if r.Method == "GET" {
-		handleAllRoutes(w, r)
 	}
 }
 
