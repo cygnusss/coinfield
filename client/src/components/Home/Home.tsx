@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div className={css.home_div}>
       <h1>
-        David
+        nikto
       </h1>
     </div>
   ) 

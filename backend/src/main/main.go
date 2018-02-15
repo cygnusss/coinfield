@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"net/http"
 	"os"
@@ -8,12 +9,37 @@ import (
 	"github.com/gorilla/mux"
 )
 
+type userProfile struct {
+	FirstName string `json:"firstname"`
+	LastName  string `json:"lastname"`
+	Email     string `json:"email"`
+	Password  string `json:"password"`
+}
+
 func handleAllRoutes(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "../../../client/index.html")
 }
 
+func handleSignup(w http.ResponseWriter, r *http.Request) {
+
+	if r.Method == "POST" {
+		var profile userProfile
+
+		decoder := json.NewDecoder(r.Body)
+		decoder.Decode(&profile)
+
+	}
+
+	if r.Method == "GET" {
+		handleAllRoutes(w, r)
+	}
+}
+
 func main() {
 	r := mux.NewRouter()
+
+	// http.Post("")
+	r.PathPrefix("/signup").HandlerFunc(handleSignup)
 
 	r.PathPrefix("/dist/").Handler(http.StripPrefix("/dist/", http.FileServer(http.Dir("../../../client/dist/"))))
 	r.PathPrefix("/").HandlerFunc(handleAllRoutes)

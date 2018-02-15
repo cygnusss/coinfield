@@ -1,6 +1,7 @@
-import * as React from 'react'
+import * as React from "react"
+import axios from "axios"
 
-class Signup extends React.Component {
+class Signup extends React.Component <any, any> {
 
   constructor(props: any) {
     super(props)
@@ -46,7 +47,20 @@ class Signup extends React.Component {
   }
 
   handleSubmit() {
-    console.log(this.state)
+    const body = JSON.stringify({
+      firstname: this.state.firstName,
+      lastname: this.state.lastName,
+      email: this.state.email,
+      password: this.state.password,
+    })
+
+    axios.post('/signup', body)
+    // .then(function (response) {
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
   }
 
   render() {
