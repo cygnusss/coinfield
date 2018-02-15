@@ -23,7 +23,7 @@ Coinfield is a _**unique**_ application that let's you get most recent prices fo
  #### To run the go server
  From the root directory run:
  ```sh
-   cd backend/src/main && go run main.go
+   cd backend/src/main && go install && go run main.go model.go redis.go
  ```
  #### To run the express server
  From the root directory run:

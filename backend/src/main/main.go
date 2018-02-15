@@ -16,7 +16,6 @@ func handleAllRoutes(w http.ResponseWriter, r *http.Request) {
 func handleSignup(w http.ResponseWriter, r *http.Request) {
 
 	switch r.Method {
-
 	case "GET":
 		handleAllRoutes(w, r)
 
@@ -26,7 +25,10 @@ func handleSignup(w http.ResponseWriter, r *http.Request) {
 		decoder := json.NewDecoder(r.Body)
 		decoder.Decode(&profile)
 
+	default:
+		handleAllRoutes(w, r)
 	}
+
 }
 
 func main() {
@@ -42,6 +44,8 @@ func main() {
 	if port == "" {
 		port = ":4200"
 	}
+
+	NewClient()
 
 	log.Println("Running go app on port", port)
 	log.Fatal(http.ListenAndServe(port, r))
