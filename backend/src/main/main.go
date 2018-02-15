@@ -45,8 +45,6 @@ func main() {
 		port = ":4200"
 	}
 
-	NewClient()
-
 	log.Println("Running go app on port", port)
 	log.Fatal(http.ListenAndServe(port, r))
 }
