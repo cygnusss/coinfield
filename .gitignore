@@ -1,2 +1,8 @@
 /node_modules/
 bundle.js
+main
+key.pem
+cert.pem
+cookie.txt
+plan.txt
+dump.rdb
