@@ -7,3 +7,9 @@ type UserProfile struct {
 	Email     string `json:"email"`
 	Password  string `json:"password"`
 }
+
+// SessionDB just simulates a database
+type SessionDB struct {
+	sessionID string
+	userID    string
+}

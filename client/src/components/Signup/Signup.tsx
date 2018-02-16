@@ -55,12 +55,6 @@ class Signup extends React.Component <any, any> {
     })
 
     axios.post('/signup', body)
-    // .then(function (response) {
-    //   console.log(response);
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // });
   }
 
   render() {
