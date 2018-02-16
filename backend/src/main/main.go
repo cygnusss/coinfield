@@ -25,9 +25,6 @@ func HandleAllRoutes(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "POST" && r.URL.Path == "/signup" {
-
-		log.Println("POST REQUEST")
-
 		var profile UserProfile
 
 		decoder := json.NewDecoder(r.Body)
@@ -35,8 +32,6 @@ func HandleAllRoutes(w http.ResponseWriter, r *http.Request) {
 
 		pw := profile.Password
 		un := profile.Email
-
-		log.Printf("UN: %s, PW: %s", un, pw)
 
 		u, _ := uuid.NewV4()
 
@@ -47,6 +42,8 @@ func HandleAllRoutes(w http.ResponseWriter, r *http.Request) {
 				Name:  "sessionID",
 				Value: u.String(),
 			}
+			w.WriteHeader(http.StatusCreated)
+
 		} else {
 			http.Redirect(w, r, "/signup", 301)
 		}
@@ -72,8 +69,6 @@ func HandleAllRoutes(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	r := mux.NewRouter()
-
-	// r.PathPrefix("/signup").HandlerFunc(handleSignup)
 
 	r.PathPrefix("/dist/").Handler(http.StripPrefix("/dist/", http.FileServer(http.Dir("../../../client/dist/"))))
 	r.PathPrefix("/").HandlerFunc(HandleAllRoutes)

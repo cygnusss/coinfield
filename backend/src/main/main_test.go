@@ -3,32 +3,33 @@ package main
 import (
 	"bytes"
 	"crypto/tls"
-	"fmt"
+	"log"
 	"net/http"
 	"testing"
 )
 
 func TestHomeRoute(t *testing.T) {
 	// time.Sleep(100 * time.Millisecond)
+	log.Println("Should response with 200 on the home route")
 
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 
 	c := &http.Client{Transport: tr}
-	res, err := c.Get("https://localhost:10443/")
+	rp, err := c.Get("https://localhost:10443/")
 
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	defer res.Body.Close()
+	defer rp.Body.Close()
 
-	if res.StatusCode != http.StatusOK {
-		t.Errorf("Response code was %v; want 200", res.StatusCode)
+	if rp.StatusCode != http.StatusOK {
+		t.Errorf("Response code was %v; want 200", rp.StatusCode)
 	}
 
-	// body, err := ioutil.ReadAll(res.Body)
+	// body, err := ioutil.ReadAll(rp.Body)
 	// if err != nil {
 	// 	t.Fatal(err)
 	// }
@@ -56,10 +57,14 @@ func TestServer(t *testing.T) {
 	rp, err := c.Do(r)
 
 	if err != nil {
-		fmt.Println(err)
+		t.Fatal(err)
+	}
+
+	log.Println("Creates users on the signup route")
+
+	if rp.StatusCode != http.StatusCreated {
+		t.Errorf("Response code was %v; want 201", rp.StatusCode)
 	}
 
 	defer rp.Body.Close()
-
-	fmt.Println(rp)
 }

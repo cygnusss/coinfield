@@ -1,5 +1,6 @@
 /node_modules/
 bundle.js
 main
-backend/pkg/
-backend/bin/
+key.pem
+cert.pem
+cookie.txt
