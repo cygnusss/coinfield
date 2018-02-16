@@ -5,3 +5,4 @@ key.pem
 cert.pem
 cookie.txt
 plan.txt
+dump.rdb
