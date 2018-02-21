@@ -6,3 +6,4 @@ cert.pem
 cookie.txt
 plan.txt
 dump.rdb
+db_pg.txt
