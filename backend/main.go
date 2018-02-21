@@ -42,7 +42,7 @@ func HandleAllRoutes(w http.ResponseWriter, r *http.Request) {
 				Name:  "sessionID",
 				Value: u.String(),
 			}
-			w.WriteHeader(http.StatusCreated)
+			// w.WriteHeader(http.StatusCreated)
 
 		} else {
 			http.Redirect(w, r, "/signup", 301)
@@ -56,13 +56,12 @@ func HandleAllRoutes(w http.ResponseWriter, r *http.Request) {
 			MaxAge: -1,
 		}
 
-		http.Redirect(w, r, "/", 200)
+		// http.Redirect(w, r, "/", 200)
 	}
 
 	log.Println(storage)
 
 	http.SetCookie(w, cookie)
-
 	http.ServeFile(w, r, "../../../client/index.html")
 
 }

@@ -1,0 +1,49 @@
+package main
+
+import (
+	"database/sql"
+	"fmt"
+	"log"
+
+	_ "github.com/lib/pq"
+)
+
+const (
+	DB_USER     = "cygnus"
+	DB_PASSWORD = ""
+	DB_NAME     = "coinfield"
+)
+
+// AddUser adds users into the profile table
+func AddUser(db *sql.DB, fn, ln, em, pw string) string {
+
+	rows, err := db.Query("SELECT * FROM coinfield")
+
+	if err != nil {
+		log.Panic(err)
+	}
+
+	log.Println(rows)
+
+	return "HAHA"
+}
+
+func init() {
+	log.Println("RUNNING POSTGRESQL")
+
+	dbinfo := fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable",
+		DB_USER, DB_PASSWORD, DB_NAME)
+	db, err := sql.Open("postgres", dbinfo)
+
+	err = db.Ping()
+
+	str := AddUser(db, "david", "david", "david", "david")
+
+	log.Println(str)
+
+	if err != nil {
+		log.Panic(err)
+	}
+
+	defer db.Close()
+}
